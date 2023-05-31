@@ -1,0 +1,163 @@
+[gd_scene load_steps=20 format=3 uid="uid://dep0vbwqvo2uv"]
+
+[ext_resource type="Script" path="res://character.gd" id="1_6bqob"]
+[ext_resource type="Texture2D" uid="uid://cnk3354g433k0" path="res://assets/character/Weopon.svg" id="2_85sky"]
+[ext_resource type="Texture2D" uid="uid://33eisyldthfr" path="res://assets/character/Main_Charecter.svg" id="2_hohka"]
+[ext_resource type="Texture2D" uid="uid://oodhpxhwx3in" path="res://assets/character/Main_Charecter_2.svg" id="3_eu814"]
+[ext_resource type="Texture2D" uid="uid://bvprroab1i1al" path="res://assets/character/Some_things.svg" id="5_iqkpa"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lg02r"]
+atlas = ExtResource("2_85sky")
+region = Rect2(0, 0, 23, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_inkwo"]
+atlas = ExtResource("3_eu814")
+region = Rect2(120, 0, 30, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_py52n"]
+atlas = ExtResource("3_eu814")
+region = Rect2(132, 140, 33, 35)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_74xra"]
+atlas = ExtResource("3_eu814")
+region = Rect2(128, 40, 32, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7rs67"]
+atlas = ExtResource("2_hohka")
+region = Rect2(0, 224, 16, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r3drw"]
+atlas = ExtResource("2_hohka")
+region = Rect2(0, 31, 28, 31)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jtn6e"]
+atlas = ExtResource("2_hohka")
+region = Rect2(0, 31, 28, 31)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dax5p"]
+atlas = ExtResource("2_hohka")
+region = Rect2(28, 31, 28, 31)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2loae"]
+atlas = ExtResource("2_hohka")
+region = Rect2(56, 31, 28, 31)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ddowe"]
+atlas = ExtResource("2_hohka")
+region = Rect2(84, 31, 28, 31)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hh5ew"]
+animations = [{
+"frames": [{
+"duration": 100.0,
+"texture": SubResource("AtlasTexture_lg02r")
+}],
+"loop": true,
+"name": &"attack",
+"speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_inkwo")
+}],
+"loop": true,
+"name": &"death",
+"speed": 60.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_py52n")
+}],
+"loop": true,
+"name": &"hurt_left",
+"speed": 60.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_74xra")
+}],
+"loop": true,
+"name": &"hurt_right",
+"speed": 60.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7rs67")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 60.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r3drw")
+}],
+"loop": true,
+"name": &"idle_left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jtn6e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dax5p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2loae")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ddowe")
+}],
+"loop": true,
+"name": &"run",
+"speed": 15.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nk6w8"]
+size = Vector2(17, 22.25)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r1axi"]
+atlas = ExtResource("5_iqkpa")
+region = Rect2(96.8669, 0.735006, 39.323, 8.64835)
+
+[sub_resource type="LabelSettings" id="LabelSettings_eyqlq"]
+line_spacing = 2.0
+font_color = Color(0.960784, 0.172549, 0.172549, 1)
+
+[node name="Character" type="Node2D"]
+script = ExtResource("1_6bqob")
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
+sprite_frames = SubResource("SpriteFrames_hh5ew")
+animation = &"hurt_left"
+flip_h = true
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="CharacterBody2D"]
+position = Vector2(-0.5, 0.875)
+shape = SubResource("RectangleShape2D_nk6w8")
+
+[node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="CharacterBody2D/Camera2D"]
+offset_left = 319.0
+offset_top = -239.0
+offset_right = 359.0
+offset_bottom = -230.0
+texture_progress = SubResource("AtlasTexture_r1axi")
+
+[node name="Label" type="Label" parent="CharacterBody2D/Camera2D"]
+offset_left = -356.0
+offset_top = -235.0
+offset_right = -313.0
+offset_bottom = -210.0
+text = "0/15"
+label_settings = SubResource("LabelSettings_eyqlq")
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Marker2D" type="Marker2D" parent="CharacterBody2D"]
+
+[connection signal="animation_finished" from="CharacterBody2D/AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

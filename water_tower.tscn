@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://jwvhvsiv067f"]
+
+[ext_resource type="Texture2D" uid="uid://dsh61al4eqk1f" path="res://assets/tiles/city.png" id="1_ecd6t"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qyq70"]
+atlas = ExtResource("1_ecd6t")
+region = Rect2(354.663, 104.826, 59.848, 71.6)
+
+[node name="water_tower" type="Node2D"]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
+texture = SubResource("AtlasTexture_qyq70")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PackedVector2Array(3, -35, -1, -35, -4, -34, -16, -22, -16, -8, -30, 19, -27, 19, -22, 8, -21, 18, -30, 35, -27, 35, -20, 21, -11, 22, -11, 35, -9, 35, -8, 34, -3, 34, -2, 36, -1, 35, 0, 21, 5, 21, 6, 35, 8, 35, 8, 21, 20, 21, 27, 35, 29, 35, 21, 17, 21, 8, 27, 20, 30, 19, 16, -8, 15, -25)

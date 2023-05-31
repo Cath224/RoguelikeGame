@@ -1,0 +1,34 @@
+[gd_scene load_steps=4 format=3 uid="uid://ctybvfub4j7r"]
+
+[ext_resource type="Script" path="res://win_menu.gd" id="1_yresh"]
+[ext_resource type="Texture2D" uid="uid://fiw3frlurk0" path="res://assets/sprites/62d30fc0-81a2-4093-b5aa-182a94855233_386389bf.jpg" id="2_tb1ac"]
+
+[sub_resource type="Theme" id="Theme_r1tuy"]
+default_font_size = 46
+
+[node name="win_menu" type="Node2D"]
+script = ExtResource("1_yresh")
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2(360, 240)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("2_tb1ac")
+
+[node name="Button" type="Button" parent="."]
+modulate = Color(1, 0.0745098, 1, 1)
+offset_left = 245.0
+offset_top = 157.0
+offset_right = 477.0
+offset_bottom = 277.0
+size_flags_horizontal = 6
+size_flags_vertical = 6
+tooltip_text = "press"
+theme = SubResource("Theme_r1tuy")
+text = "You win"
+text_overrun_behavior = 4
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

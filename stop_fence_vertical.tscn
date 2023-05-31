@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://buxulbyyn0bho"]
+
+[ext_resource type="Texture2D" uid="uid://dsh61al4eqk1f" path="res://assets/tiles/city.png" id="1_g7ndl"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5cct5"]
+atlas = ExtResource("1_g7ndl")
+region = Rect2(416, 42, 8, 38)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hp4yu"]
+size = Vector2(6, 38)
+
+[node name="stop_fence_vertical" type="Node2D"]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
+texture = SubResource("AtlasTexture_5cct5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-1, 0)
+shape = SubResource("RectangleShape2D_hp4yu")

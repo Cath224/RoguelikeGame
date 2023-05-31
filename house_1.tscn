@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://dykai2r1lfdgx"]
+
+[ext_resource type="Texture2D" uid="uid://dsh61al4eqk1f" path="res://assets/tiles/city.png" id="1_eujcl"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4rusk"]
+atlas = ExtResource("1_eujcl")
+region = Rect2(618.607, 51.6307, 188.299, 156.068)
+
+[node name="house_1" type="Node2D"]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
+texture = SubResource("AtlasTexture_4rusk")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PackedVector2Array(-89, -46, -63, -47, -63, -46, 93, -46, 93, 78, -66, 78, -66, 61, -89, 61, -89, 16, -88, 4, -88, -45, -89, -46, -90, -50, -89, -47, -79, -50, -63, -47)

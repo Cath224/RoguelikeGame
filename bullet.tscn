@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://buh2rnpbdjwpq"]
+
+[ext_resource type="Texture2D" uid="uid://82n4nqbnekxc" path="res://assets/character/bulltet.svg" id="1_kry2u"]
+[ext_resource type="Script" path="res://bullet.gd" id="1_u0ugy"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jeq3u"]
+size = Vector2(2, 1)
+
+[node name="bullet" type="Node2D"]
+script = ExtResource("1_u0ugy")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+autostart = true
+
+[node name="bullet" type="Area2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="bullet"]
+texture = ExtResource("1_kry2u")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="bullet"]
+shape = SubResource("RectangleShape2D_jeq3u")
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="area_entered" from="bullet" to="." method="_on_area_2d_area_entered"]

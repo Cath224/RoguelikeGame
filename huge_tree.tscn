@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://d1r88sx2e8ndg"]
+
+[ext_resource type="Texture2D" uid="uid://dsh61al4eqk1f" path="res://assets/tiles/city.png" id="1_31xm1"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mjgav"]
+atlas = ExtResource("1_31xm1")
+region = Rect2(223.352, 127.645, 33.2969, 47.6672)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_s56xm"]
+radius = 16.0
+height = 46.0
+
+[node name="huge_tree" type="Node2D"]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
+texture = SubResource("AtlasTexture_mjgav")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("CapsuleShape2D_s56xm")
+disabled = true
